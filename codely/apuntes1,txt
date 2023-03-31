@@ -1,0 +1,233 @@
+Cuándo uno quiere empezar a probar Go, tiene dos opciones: configurarse en el entorno en su plataforma, o usar el Playground de Go. Para empezar a jugar con la sintáxis, lo más recomendable es usar ésta última opción. El Playground de Go es una aplicación web mantenida por Google, con lo que ello supone (alta disponibilidad, actualización immediata, etc), dónde podremos escribir y ejecutar pequeñas aplicaciones escritas en Go. De hecho, ésta herramienta nos permite incluso simular la existencia de varios ficheros e importar paquetes de terceros.
+
+
+
+¿Qué es un paquete?
+
+
+Sin entrar en mucho detalle, vamos a definir un paquete como todo el conjunto de ficheros Go (.go) encabezados por la sentencia `package nombredelpaquete` y que residen en el mismo directorio.
+
+
+
+Visibilidad
+
+
+Una vez empecemos a escribir nuestras primeras líneas de código, nos surgirá una duda: 
+
+¿cuál es la visibilidad de mis funciones, estructuras de datos, etc?
+
+
+
+La respuesta en Go es algo impactante, pero muy sencilla:
+
+
+
+Si empieza en mayúscula: pública.
+Si empieza en minúscula: privada (a nivel de paquete).
+
+
+Punto de entrada
+
+
+Lo normal es que muchas veces desarrollemos paquetes que contengan lógica de negocio o estructuras de datos para nuestras aplicaciones, sin embargo, lo que casi siempre vamos a tener (a menos que desarrollemos una librería, por ejemplo), será un punto de entrada.
+
+
+
+El paquete que ejerce como tal, se define por convención, mediante el uso del nombre `main`.
+
+Del mismo modo, la función `main()` dentro del mismo será el punto de entrada al paquete. Es decir, por dónde empezará la ejecución de nuestras aplicaciones.
+
+
+
+¿Cómo importar otros paquetes?
+
+
+A la hora de importar otros paquetes, lo podemos hacer de varias formas, todas ellas haciendo uso de la palabra clave `import`, ya sea en su versión individual o en su versión masiva:
+
+
+
+Ejemplo 01
+
+
+
+La referencia del paquete siempre corresponderá al repositorio del mismo (a dónde se irá a buscar) o con el nombre del paquete en caso de que éste sea parte del core de Go.
+
+
+
+Las diferentes formas que tenemos de importar un paquete son:
+
+
+
+La forma estándar (usando `import` y el nombre del paquete).
+Los dot imports (para no tener que poner el nombre del paquete en el código).
+Los underscore imports (para importar paquetes que no se referencien explícitamente).
+Los alias (para renombrar el paquete importado, p. e. en caso de colisión de nombres).
+
+
+Podemos ver un ejemplo a continuación:
+
+
+
+Ejemplo 02
+
+
+
+¿Cómo declarar una variable?
+
+
+A la hora de declarar una variable, tenemos dos opciones:
+
+
+
+El formato corto (haciendo uso de `:=`)
+El formato largo (haciendo uso de `var`)
+
+
+Lo más habitual será usar el formato corto cuándo queramos declarar una variable ya inicializada (con un valor) y usar el formato largo cuándo queramos declarar una variable sin inicializar o con el valor por defecto.
+
+
+
+¿Cómo declarar una función?
+
+
+Si queremos declarar  nuevas funciones, debemos recordar lo visto anteriormente: el uso de mayúsculas o minúsculas en el nombre de las mismas definirá su visibilidad a nivel de paquete.
+
+
+
+Para definir una función vamos a hacer uso de la palabra clave ' func'. Los argumentos de la misma se definirán siguiente el orden: nombre de la variable y tipo, pudiendo concatenar varias variables del mismo tipo Además, también definiremos el tipo de retorno de la misma, el cuál puede ser implícito o explícito. Veamos varios ejemplos:
+
+
+
+Ejemplo 03
+
+
+
+Es importante recordar que, al ser Go un lenguaje de más bajo nivel que otros, tendremos diferentes formas de representación de un mismo tipo. Por ejemplo, tenemos diferentes tamaños a la hora de representar un entero (int8, int16, int32, etc).
+
+
+
+¿Cómo programar un bucle?
+
+
+A la hora de programar bucles, en Go usaremos la palabra clave `for`. Esta puede ser usada de varias formas:
+
+
+
+De forma tradicional, siguiendo el formato:   inicialización; finalización; iteración
+Junto con la palabra clave `range` (p. e. para recorrer estructuras de datos)
+
+
+Véamos algunos ejemplos:
+
+
+
+Ejemplo 04
+
+
+
+¿Cómo hacer uso de condicionales?
+
+
+A la hora de escribir código condicional, tenemos algunas de las opciones habituales en la mayoría de lenguajes de programación:
+
+
+
+IF...ELSE
+SWITCH
+
+
+IF
+
+
+Los IF funcionan del mismo modo que en otros lenguajes de programación, con el añadido de que en Go no es obligatorio poner la condición entre paréntesis. Véamos un ejemplo:
+
+
+
+Ejemplo 05
+
+
+
+SWITCH
+
+
+Los SWITCH por su lado, sí que funcionan de forma un poco distinta al resto de lenguajes. Pues, a lo que estamos acostumbrados es a definir la condición a evaluar con la palabra clave `switch` y posteriormente definir todos los posible casos con `case` (`default` incluído). Cada uno de los casos suele estar aislado mediante la palabra reservada `break`. Sin embargo, este comportamiento ya está predefinido por defecto en Go. De forma que, solo indicaremos de forma explícita cuándo queramos concatenar dos `case` mediante el uso de la palabra clave `fallthrough`, como se muestra a continuación:
+
+
+
+Ejemplo 06
+
+
+
+¿Qué mas debo saber?
+
+
+Antes de seguir, con la siguiente lección, solo queremos robarte cinco minutos más para explicarte algunas peculiaridades de Go:
+
+
+
+Los puntos y coma (;)
+
+
+Los puntos y coma son opcionales en Go, pues, lo que hace el compilador antes de proceder a su propia función (la de compilar nuestro programa), es añadir un punto y coma al final de cada línea. Es por eso que Go nos fuerza a seguir una estructra determinada en nuestro código, y, por eso, nos fuerza a abrir las llaves de una función a continuación de la definición de la misma, por ejemplo.
+
+
+
+El formateado del código
+
+
+En Go no hay debate. El formato es uno y único. Este lo conseguiremos mediante el uso de la herramienta `gofmt` incluída en el core. Una buena forma de mantaner un estándar, la verdad. Aunque, también debemos comentar que ya hay quién ha reescrito el `gofmt` para añadirle sus propias reglas de formato. Sea como sea, aquí sí hay un formato estándar.
+
+
+
+Los null (nil)
+
+
+En Go, los null son nil. De forma qué, cuándo tengamos una variable definida sin inicializar, el valor de la misma será nil, siempre y cuándo éste sea un valor válido para el tipo de la misma.
+
+
+
+Los tipos que permiten nil como un valor válido son:
+
+
+
+punteros
+maps
+slices
+funciones
+channels
+interfaces
+
+
+Si queréis profundizar más acerca de los nil, podéis revisar nuestro artículo
+
+
+
+¡No al dead code!
+
+
+En Go, declarar una variable que no va a ser usada, o importar un paquete que no va a ser usado, ¡es pecado! En ese caso, el compilador nos avisará y nos dará un error de compilación. Así que ya sabéis, ¡id con cuidado!
+
+
+
+
+
+Y, ¡hasta aquí por ahora! 
+
+
+
+Con esto creémos que ya tenéis los conocimientos básicos suficientes para empezar a escribir vuestras primeras líneas de código.  ¡Adelante con ello!
+
+////////////////////////////////////////
+
+para formatear archivo con la libreria de go:
+gofmt -w swich.go
+
+Para hacer binario ejecutable:
+go build -o main main.go
+
+Ejecutar binario:
+./main
+Resultado:
+2
+0
+

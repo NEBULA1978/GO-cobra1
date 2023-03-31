@@ -1,0 +1,1 @@
+1//Puede modificar este codigo2//Haga clic aqui y comience a escribir.3 package main45import "fmt"func main(){8fmt.Printin("Hola.area de juegos")90

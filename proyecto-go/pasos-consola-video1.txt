@@ -1,0 +1,28 @@
+next@next-System:~$ ls $GOPATH
+Descargas         Escritorio  Música        Público
+Documentos        go          Plantillas    Vídeos
+errro-aptkey.txt  Imágenes    proyecto-go1
+next@next-System:~$ ls ~$GOPATH
+ls: cannot access '~': No such file or directory
+next@next-System:~$ ls $GOPATH
+Descargas         Escritorio  Música        Público
+Documentos        go          Plantillas    Vídeos
+errro-aptkey.txt  Imágenes    proyecto-go1
+next@next-System:~$ ls ~/go/
+bin  pkg  src
+next@next-System:~$ ls ~/go/src
+next@next-System:~$ mkdir -p  ~/go/src/gihub.com/CodelyTV/test_proyect
+next@next-System:~$ cd ~/go/src/gihub.com/CodelyTV/test_proyect
+next@next-System:~/go/src/gihub.com/CodelyTV/test_proyect$ go mod init
+go: creating new go.mod: module gihub.com/CodelyTV/test_proyect
+next@next-System:~/go/src/gihub.com/CodelyTV/test_proyect$ ls
+go.mod
+next@next-System:~/go/src/gihub.com/CodelyTV/test_proyect$ cat go.mod 
+module gihub.com/CodelyTV/test_proyect
+
+go 1.20
+next@next-System:~/go/src/gihub.com/CodelyTV/test_proyect$ 
+
+
+Para crear proyecto primeros pasos,
+

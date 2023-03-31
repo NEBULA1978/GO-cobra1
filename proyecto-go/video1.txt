@@ -1,0 +1,77 @@
+Empezando nuestro proyecto
+Vamos a ver qué tenemos que tener en cuenta antes de comenzar un proyecto en Go.
+
+
+
+$GOPATH
+Durante la instalación de Go hemos definido donde se encontrará nuestro $GOPATH, el $GOPATH no es más que la ruta donde se encontrará nuestro workspace, normalmente suele encontrarse en:
+
+~/go/
+Pero podemos cambiarlo como a donde queramos cambiando la variable de entorno $GOPATH.
+
+Dentro del $GOPATH encontraremos la siguiente estructura de carpetas:
+
+$GOPATH/pkg $GOPATH/src $GOPATH/bin
+Hasta ahora todos nuestros proyectos tenían que estar creados a partir de $GOPATH/src, pero desde la llegada de Go Modules esto ya no es necesario.
+
+
+
+Si quieres saber más sobre Go Modules te recomendamos leer los siguientes artículos:
+
+https://blog.friendsofgo.tech/posts/go-modules-en-tres-pasos/
+https://blog.friendsofgo.tech/posts/migrar-a-go-modules-facilmente/
+
+
+¿Cómo nombro a mi proyecto?
+El sistema de paquetes que utiliza Go para comunicarse con nuestro vendoring, es algo particular y es que necesita la ruta del repositorio donde está alojado
+
+
+
+ej.
+
+$GOPATH/github.com/CodelyTV/golang-introduction
+Pero esta estructura de directorios sólo es obligatoria si trabajamos desde el $GOPATH en cambio si estamos fuera del $GOPATH esta estructura no será necesaria y se calculará a partir del nombre del module, el cual si que tiene que mantener la ruta del repositorio:
+
+
+
+fichero: go.mod
+
+module github.com/CodelyTV/golang-introduction
+Esto es útil para no tener que depender del $GOPATH.
+
+
+
+Para generar nuestro go.mod, basta con ejecutar el comando go mod init ﻿<nombre_del_modulo>, el nombre del modulo sólo será necesario si se trabaja fuera del $GOPATH sino inferirá la ruta.
+
+ej:
+
+go mod init github.com/CodelyTV/golang-introduction
+
+
+
+Algo muy importante a tener en cuenta es que el nombre del modulo es case sensitive.
+
+
+
+Pues con esto ya podremos empezar a trabajar en nuestro nuevo proyecto.
+
+
+Complete Step
+
+
+///////////////////////
+///////////////////////
+which $GOPATH
+Isntalo la variable GOPATH en el PATH:
+export GOPATH=/home/next/go
+
+ls $GOPATH
+bin  pkg
+
+Creo carpeta src:
+ mkdir -p $GOPATH/src
+
+ls $GOPATH
+bin  pkg  src
+
+Ya engo instalada variable entorno GO
